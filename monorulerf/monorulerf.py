@@ -39,7 +39,7 @@ class MonoRuleRandomForest(RandomForestClassifier):
 
     This algorithm fits `sci-kit learn's` RandomForestClassifier and then
     filters the leaf rules to eliminate monotone non-compliant rules. The
-    approach is described in the paper [2]. It is very fast, but not as
+    approach is described in the paper by Bartley et al. 2017. It is very fast, but not as
     accurate as the approach described in our later papers.
     
     Other than the additional constructor variables `incr_feats` and 
@@ -230,7 +230,6 @@ class MonoRuleRandomForest(RandomForestClassifier):
         was never left out during the bootstrap. In this case,
         `oob_decision_function_` might contain NaN.
 
-    [1]
 
     Notes
     -----
