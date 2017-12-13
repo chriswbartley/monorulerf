@@ -52,7 +52,7 @@ All trademarks referenced herein are property of their respective holders.
 Copyright (c) 2017, Christopher Bartley
 """
 
-NAME = monorulerf
+NAME = 'monorulerf'
 MAINTAINER = "Christopher Bartley"
 MAINTAINER_EMAIL = "christopher.bartley@research.uwa.edu.au"
 DESCRIPTION = description
