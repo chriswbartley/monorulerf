@@ -39,13 +39,13 @@ class MonoRuleRandomForest(RandomForestClassifier):
 
     This algorithm fits `sci-kit learn's` RandomForestClassifier and then
     filters the leaf rules to eliminate monotone non-compliant rules. The
-    approach is described in the paper by Bartley et al. 2017. It is very fast, but not as
-    accurate as the approach described in our later papers.
-    
-    Other than the additional constructor variables `incr_feats` and 
-    `decr_feats` all other variables are as per `sci-kit learn` 
+    approach is described in the paper by Bartley et al. 2017. It is very fast,
+    but not as accurate as the approach described in our later papers.
+
+    Other than the additional constructor variables `incr_feats` and
+    `decr_feats` all other variables are as per `sci-kit learn`
     `RandomForestClassifier`.
-    
+
     A random forest is a meta estimator that fits a number of decision tree
     classifiers on various sub-samples of the dataset and use averaging to
     improve the predictive accuracy and control over-fitting.
@@ -250,12 +250,11 @@ class MonoRuleRandomForest(RandomForestClassifier):
     ----------
 
     .. [1] L. Breiman, "Random Forests", Machine Learning, 45(1), 5-32, 2001.
-    .. [2] C. Bartley, W. Liu, M. Reynolds, "A Novel Framework for Constructing Partially
-    Monotone Rule Ensembles", ICDE, prepub, tba, 2017.
+    .. [2] C. Bartley, W. Liu, M. Reynolds, "A Novel Framework for Constructing
+    Partially Monotone Rule Ensembles", ICDE, prepub, tba, 2017.
 
     See also
     --------
-    
     """
     def __init__(
             self,
