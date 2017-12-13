@@ -215,7 +215,7 @@ class MonoRuleRandomForest(RandomForestClassifier):
                       str(np.sum(predictions[k].sum(axis=1) == 0)))
                 pred_classes[predictions[k].sum(
                     axis=1) == 0] = maj_class_from_sampled[predictions[k].sum(
-                            axis=1) == 0]
+                    axis=1) == 0]
             oob_score += np.mean(y[:, k] ==
                                  pred_classes, axis=0)
         self.oob_score_ = oob_score / self.n_outputs_
@@ -248,7 +248,7 @@ def monotonise_tree(tree, n_feats, incr_feats, decr_feats):
 
         if not node_is_leaf(
                 tree,
-                node_id):  
+                node_id):
             feature = tree.feature[node_id]
             threshold = tree.threshold[node_id]
             left_node_id = tree.children_left[node_id]

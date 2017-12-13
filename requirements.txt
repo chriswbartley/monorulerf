@@ -1,6 +1,4 @@
 numpy
-cvxopt
 sphinx_gallery
-pandas
 scipy
 sklearn
