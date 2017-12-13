@@ -4,6 +4,7 @@ PACKAGES = find_packages()
 
 # Get version and release info, which is all stored in monorulerf/version.py
 ver_file = os.path.join('monorulerf', 'version.py')
+print(ver_file)
 with open(ver_file) as f:
     exec(f.read())
 
