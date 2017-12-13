@@ -250,8 +250,8 @@ class MonoRuleRandomForest(RandomForestClassifier):
     ----------
 
     .. [1] L. Breiman, "Random Forests", Machine Learning, 45(1), 5-32, 2001.
-    .. [2] C. Bartley, W. Liu, M. Reynolds, "A Novel Framework for Constructing
-    .. [2] Partially Monotone Rule Ensembles", ICDE, prepub, tba, 2017.
+    .. [2] C. Bartley, W. Liu, M. Reynolds, "A Novel Framework for \
+    Constructing Partially Monotone Rule Ensembles", ICDE, prepub, tba, 2017.
 
     See also
     --------
