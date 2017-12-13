@@ -5,36 +5,9 @@ Created on Fri Apr 15 13:50:36 2016
 @author: Hi
 """
 
-#from __future__ import division
-#
-#import warnings
-#from warnings import warn
-#
-#from abc import ABCMeta, abstractmethod
-#
-#import numpy as np
-#from scipy.sparse import issparse
-#
-#from sklearn.base import ClassifierMixin, RegressorMixin
-#from sklearn.externals.joblib import Parallel, delayed
-#from sklearn.externals import six
-#from sklearn.feature_selection.from_model import _LearntSelectorMixin
-#from sklearn.metrics import r2_score
-#from sklearn.preprocessing import OneHotEncoder
-from warnings import warn
-from sklearn.tree import (DecisionTreeClassifier)  # , DecisionTreeRegressor,
-#  ExtraTreeClassifier, ExtraTreeRegressor)
 from sklearn.tree._tree import DTYPE, DOUBLE
 from sklearn.utils import check_random_state, check_array
-#from sklearn.tree._tree import DTYPE, DOUBLE
-#from sklearn.utils import check_random_state, check_array, compute_sample_weight
-#from sklearn.utils.validation import DataConversionWarning, NotFittedError
-#from scipy.base import BaseEnsemble, _partition_estimators
-#from sklearn.utils.fixes import bincount
-#from sklearn.utils.multiclass import check_classification_targets
 from sklearn.ensemble import RandomForestClassifier
-from numpy import bincount
-from sklearn.metrics import r2_score
 import numpy as np
 from scipy.sparse import issparse
 __all__ = ["MonoRuleRandomForest"]
@@ -142,10 +115,6 @@ class MonoRuleRandomForest(RandomForestClassifier):
         if not self.bootstrap and self.oob_score:
             raise ValueError("Out of bag estimation only available"
                              " if bootstrap=True")
-        # need to set these back to 1 element lists due to way super().fit() changes them to scalar AFTER calling set_oob_score_()
-#        if self.n_outputs_ == 1:
-#            self.n_classes_ = [self.n_classes_]
-#            self.classes_ = [self.classes_]
         if self.oob_score_local:
             self._set_oob_score(X, y)
         # Decapsulate classes_ attributes
@@ -213,7 +182,6 @@ class MonoRuleRandomForest(RandomForestClassifier):
         n_classes_ = self.n_classes_
         n_samples = y.shape[0]
 
-        oob_decision_function = []
         oob_score = 0.0
         predictions = []
         maj_class_from_sampled = np.zeros(n_samples)
@@ -246,31 +214,17 @@ class MonoRuleRandomForest(RandomForestClassifier):
                 print('num pts with no predictions: ' +
                       str(np.sum(predictions[k].sum(axis=1) == 0)))
                 pred_classes[predictions[k].sum(
-                    axis=1) == 0] = maj_class_from_sampled[predictions[k].sum(axis=1) == 0]
-
-
-#                warn("Some inputs do not have OOB scores. "
-#                     "This probably means too few trees were used "
-#                     "to compute any reliable oob estimates.")
-
-            # decision = (predictions[k] /
-            #            predictions[k].sum(axis=1)[:, np.newaxis])
-            # oob_decision_function.append(decision)
+                    axis=1) == 0] = maj_class_from_sampled[predictions[k].sum(
+                            axis=1) == 0]
             oob_score += np.mean(y[:, k] ==
                                  pred_classes, axis=0)
-
-#        if self.n_outputs_ == 1:
-#            self.oob_decision_function_ = oob_decision_function[0]
-#        else:
-#            self.oob_decision_function_ = oob_decision_function
-
         self.oob_score_ = oob_score / self.n_outputs_
 
 
 def node_is_leaf(tree, node_id, only_count_non_zero=False):
     if only_count_non_zero:
-        return tree.children_left[node_id] == tree.children_right[node_id] and not np.all(
-            np.asarray(tree.value[node_id][0]) == 0.)
+        return tree.children_left[node_id] == tree.children_right[node_id] and\
+            not np.all(np.asarray(tree.value[node_id][0]) == 0.)
     else:
         return tree.children_left[node_id] == tree.children_right[node_id]
 
@@ -294,7 +248,7 @@ def monotonise_tree(tree, n_feats, incr_feats, decr_feats):
 
         if not node_is_leaf(
                 tree,
-                node_id):  # tree.children_left[node_id] != tree.children_right[node_id]: #not a leaf node
+                node_id):  
             feature = tree.feature[node_id]
             threshold = tree.threshold[node_id]
             left_node_id = tree.children_left[node_id]
@@ -305,13 +259,12 @@ def monotonise_tree(tree, n_feats, incr_feats, decr_feats):
         else:  # a leaf node
             if np.sum(path) > 0:
                 # check if all increasing
-
                 all_increasing = np.sum(np.asarray([path[i_feat,
-                                                         MINUS] if i_feat + 1 in incr_feats else path[i_feat,
-                                                                                                      PLUS] for i_feat in mt_feats - 1])) == 0
+                        MINUS] if i_feat + 1 in incr_feats else path[i_feat,
+                        PLUS] for i_feat in mt_feats - 1])) == 0
                 all_decreasing = np.sum(np.asarray([path[i_feat,
-                                                         MINUS] if i_feat + 1 in decr_feats else path[i_feat,
-                                                                                                      PLUS] for i_feat in mt_feats - 1])) == 0
+                        MINUS] if i_feat + 1 in decr_feats else path[i_feat,
+                        PLUS] for i_feat in mt_feats - 1])) == 0
                 counts = np.asarray(tree.value[node_id][0])
                 probs = counts / np.sum(counts)
                 predicted_value = np.sign(probs[1] - 0.5)
@@ -322,7 +275,7 @@ def monotonise_tree(tree, n_feats, incr_feats, decr_feats):
                 else:  # not a valid rule
                     tree.value[node_id][0] = [0., 0.]
             else:
-                print('********** WHAT THE??? ****** ' + str(tree.node_count))
+                print('Tree has only one node (i.e. the root node!)')
             return None
     if len(mt_feats) > 0:
         traverse_nodes()
