@@ -3,7 +3,7 @@ from os.path import join as pjoin
 
 # Format expected by setup.py and doc/source/conf.py: string of form "X.Y.Z"
 _version_major = 0
-_version_minor = 2
+_version_minor = 3
 _version_micro = ''  # use '' for first of series, number for 1 and above
 _version_extra = 'dev'
 _version_extra = ''  # Uncomment this for full releases
@@ -32,7 +32,7 @@ monorulerf: a Random Forest Classifier with monotone feature capability.
 # Long description will go up on the pypi page
 long_description = """
 
-Monoboost
+monorulerf
 ========
 MonoRuleRandomForest is a Random Forest Classifier for Python with monotone feature
 capability.
@@ -52,7 +52,7 @@ All trademarks referenced herein are property of their respective holders.
 Copyright (c) 2017, Christopher Bartley
 """
 
-NAME = "MonoRuleRandomForest"
+NAME = monorulerf
 MAINTAINER = "Christopher Bartley"
 MAINTAINER_EMAIL = "christopher.bartley@research.uwa.edu.au"
 DESCRIPTION = description

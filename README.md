@@ -29,7 +29,7 @@ clf = monorulerf.MonoRuleRandomForest(n_estimators=n_estimators,
                                              incr_feats=incr_feats,
                                              decr_feats=decr_feats)
 clf.fit(X, y)
-y_pred = mb_clf.predict(X)
+y_pred = clf.predict(X)
 ```	
 Of course usually the above will be embedded in some estimate of generalisation error such as out-of-box (oob) score or cross-validation.
 
