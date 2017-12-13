@@ -18,7 +18,7 @@ import os
 
 # General information about the project.
 project = 'monorulerf'
-copyright = '2015, Ariel Rokem'
+copyright = '2017, Christopher Bartley'
 
 currentdir = os.path.abspath(os.path.dirname(__file__))
 ver_file = os.path.join(currentdir, '..', project, 'version.py')
@@ -237,7 +237,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'monorulerf.tex', 'monorulerf Documentation',
-   'Ariel Rokem', 'manual'),
+   'Christopher Bartley', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -267,7 +267,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'monorulerf', 'monorulerf Documentation',
-     ['Ariel Rokem'], 1)
+     ['Christopher Bartley'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -281,7 +281,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'monorulerf', 'monorulerf Documentation',
-   'Ariel Rokem', 'monorulerf', 'One line description of project.',
+   'Christopher Bartley', 'monorulerf', 'One line description of project.',
    'Miscellaneous'),
 ]
 
