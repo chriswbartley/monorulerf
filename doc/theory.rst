@@ -10,6 +10,5 @@ The monotone classification algorithm implemented here is described in the paper
 
 
 
-.. [bartley2017] Bartley C., Liu W., Reynolds M. (2017). 
-A Novel Framework for Partially Monotone Rule Ensembles. ICDE submission, prepub, http://staffhome.ecm.uwa.edu.au/~19514733/
+.. [bartley2017] Bartley C., Liu W., Reynolds M. (2017). A Novel Framework for Partially Monotone Rule Ensembles. ICDE submission, prepub, http://staffhome.ecm.uwa.edu.au/~19514733/
 
