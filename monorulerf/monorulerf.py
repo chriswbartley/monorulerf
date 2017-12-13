@@ -214,8 +214,8 @@ class MonoRuleRandomForest(RandomForestClassifier):
                 print('num pts with no predictions: ' +
                       str(np.sum(predictions[k].sum(axis=1) == 0)))
                 pred_classes[predictions[k].sum(
-                    axis=1) == 0] = maj_class_from_sampled[predictions[k].sum(
-                    axis=1) == 0]
+                    axis=1) == 0] = maj_class_from_sampled[
+                    predictions[k].sum(axis=1) == 0]
             oob_score += np.mean(y[:, k] ==
                                  pred_classes, axis=0)
         self.oob_score_ = oob_score / self.n_outputs_
