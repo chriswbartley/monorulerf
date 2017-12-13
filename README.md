@@ -33,7 +33,9 @@ y_pred = clf.predict(X)
 ```	
 Of course usually the above will be embedded in some estimate of generalisation error such as out-of-box (oob) score or cross-validation.
 
-For more examples including for MonoRuleRandomForestEnsemble, see [the documentation](http://monorulerf.readthedocs.io/en/latest/index.html).
+### Documentation
+
+For more examples see [the documentation](http://monorulerf.readthedocs.io/en/latest/index.html).
 
 ### Installation
 
