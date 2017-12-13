@@ -2,15 +2,10 @@
 Theory
 ========================
 
-The monotone classification algorithms implemented here are described in the paper paper [bartley2017]_. A series of instance based rules based on inequalities in monotone features, and cone based constraints on non-monotone features, are fitted using gradient boosting. The resulting binary classifier takes the form:
+The monotone classification algorithms implemented here are described in the paper paper [bartley2017]_. A model is fit in two stages. First a standard `sci-kit learn` `RandomForestClassifier` is fit to the data, then the leaves are parsed to effectively remove non-monotone compliant leaves (i.e. those that do not comply with Theorem 3.1 and Lemma 4.1 in the paper). The result is a classifier that is perfectly monotone in the requested features, and very fast. Accuracy is not as good as later approaches by the same authors which use a different approach to monotonising the leaves.
 
-.. math::
+.. DELETE_THIS_TO_USEmath::
     F(\textbf{x})=sign(a_0 + \sum_{m=1}^{M}a_m f_m(\textbf{x}))
-
-where each rule is based on some base point x_m and a conical constraint on the non-monotone features defined by vectors v_m and w_m, of the form:
-
-.. math::
-    f_m(\textbf{x},\textbf{z})= \textbf{1}  \big[ \textbf{x}\succeq \textbf{x}_m \: \land \: \textbf{z} \in\{\textbf{z} \mid  \textbf{w}_m^T\Delta\textbf{z} \le \textbf{v}_m^T\Delta\textbf{x}  \} \big]
 
 
 

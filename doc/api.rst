@@ -12,7 +12,6 @@ Classes
    :toctree: gen_api
 
    MonoRuleRandomForest
-   MonoRuleRandomForestEnsemble
 
 
 Functions

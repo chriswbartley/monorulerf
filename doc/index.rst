@@ -6,7 +6,7 @@
 Welcome to monorulerf's documentation!
 ====================================
 
-`Monoboost` is the first instance based classification algorithm that allows for *partial* monotonicity (i.e. some *non*-monotone features). It uses standard inequality constraints on the monotone features, and novel L1 cones to place sensible constraints on non-monotone features.
+`MonoRuleRandomForest` is a Random Forest classifier with the added capability of partially monotone features. It is very fast and moderately accurate. 
 
 To install, simply use :bash:`pip install monorulerf`. For full documentation you've come to the right place. For a brief overview, refer to the `README file 
 <https://github.com/chriswbartley/monorulerf/blob/master/README.md>`_ in the Github repository.
