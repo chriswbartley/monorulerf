@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = monorulerf/*
+include = monorulerf/*
+omit = */setup.py
+[report]
+include = monorulerf/*
